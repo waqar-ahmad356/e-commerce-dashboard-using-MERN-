@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Signup from './components/Signup';
 import PrivateComponent from './components/PrivateComponent';
 import Login from './components/Login';
+import AddProduct from './components/AddProduct';
+import Products from './components/Products';
 
 function App() {
   return (
@@ -20,10 +22,10 @@ function App() {
 
         <Route element={<PrivateComponent/>}>
           {/* Route for the home page */}
-          <Route path='/' element={<h1>Product Listing Component</h1>} ></Route>
+          <Route path='/' element={<Products/>} ></Route>
           
           {/* Route for adding a product */}
-          <Route path='/add' element={<h1>Add Product Component</h1>}></Route>
+          <Route path='/add' element={<AddProduct/>}></Route>
           
           {/* Route for updating a product */}
           <Route path='/update' element={<h1>Update Product Component</h1>}></Route>

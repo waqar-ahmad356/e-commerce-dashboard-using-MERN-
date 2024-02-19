@@ -64,3 +64,23 @@ margin-left:90px;
   margin-top: 15px;
   margin-left: 20px;
 }
+.invalid-input{
+  color: red;
+  margin-left: 25px;
+  display: block;
+  margin-top: -2px;
+}
+.product-list{
+  text-align: center;
+  margin-top: 50px;
+ 
+}
+.product-list ul li{
+  display: inline-block;
+  padding: 10px;
+  border:1px solid skyblue;
+  width: 150px;
+}
+.product-list ul{
+  margin: 0px;
+}

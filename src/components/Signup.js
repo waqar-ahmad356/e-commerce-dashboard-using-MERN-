@@ -9,13 +9,13 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const navigate=useNavigate();
 
-  const useEffect=()=>{
+  const useEffect=(()=>{
     const auth=localStorage.getItem('user');
     if(auth)
     {
       navigate('/');
     }
-  }
+  },[]);
 
   // Function to collect and log user data
   const collectData = async () => {
