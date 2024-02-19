@@ -1,6 +1,7 @@
 //importing required modules
 const express=require('express');
 const User=require('./db/User');
+const Product=require('./db/Product');
 const cors=require('cors');
 const app=express();
 app.use(cors());
@@ -31,6 +32,19 @@ app.post('/login',async(req,resp)=>{
     }
 }
 );
-
+app.post('/add-product',async(req,resp)=>{
+    let product=new Product(req.body);
+    let result= await product.save();
+    resp.send(result);
+})
+app.get('/products',async(req,resp)=>{
+    let products= await Product.find();
+    if(products.length>0){
+        resp.send(products);
+    }
+    else{
+        resp.send("No Products Found");
+    }
+})
 
 app.listen(4500);
