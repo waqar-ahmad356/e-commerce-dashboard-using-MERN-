@@ -32,7 +32,7 @@ function App() {
           <Route path='/update/:id' element={<Updateproduct/>}></Route>
           
           {/* Route for logging out */}
-          <Route path='/logout' element={<h1>Logout Component</h1>}></Route>
+          <Route path='/logout' element={<h1>You have been logout Successfully...!</h1>}></Route>
           
           {/* Route for user profile */}
           <Route path='/profile' element={<h1>Profile Component</h1>}></Route>
