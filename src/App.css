@@ -84,3 +84,12 @@ margin-left:90px;
 .product-list ul{
   margin: 0px;
 }
+.search-input-box{
+ 
+  padding: 10px;
+  margin: 25px;
+  border: 2px solid orange;
+  border-radius: 5px;
+  width: 300px;
+
+}

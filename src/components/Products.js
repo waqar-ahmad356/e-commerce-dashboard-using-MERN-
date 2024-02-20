@@ -33,12 +33,31 @@ const Products = () => {
 
         
     }
+    const searchhandle=async(e)=>{
+       let key=e.target.value;
+       if (key){
+        let result=await fetch (`http://localhost:4500/search/${key}`);
+       result=await result.json();
+
+       if (result){
+        setProducts(result);
+       }
+      
+
+       }
+       else
+       {
+        getData();
+       }
+       
+    }
 
     
 
     return (
         <div className='product-list'>
             <h1>List of Products</h1>
+            <input type='text' className='search-input-box' placeholder='search' onChange={searchhandle}></input>
             <ul>
                 <li>Sr. No.</li>
                 <li>Name</li>
@@ -57,7 +76,7 @@ const Products = () => {
                         <li>{item.category}</li>
                         <li>{item.company}</li>
                         <li><button onClick={()=>deleteProduct(item._id)}>Delete</button>
-                        <Link to={`/update/${item._id}`}>update</Link>
+                        <Link to={`/update/${item._id}`}><button>update</button></Link>
                         </li>
                     </ul>
                 ))
