@@ -3,7 +3,9 @@ const express=require('express');
 const User=require('./db/User');
 const Product=require('./db/Product');
 const cors=require('cors');
+const Jwt=require('jsonwebtoken');
 const app=express();
+const jwtkey='e-comm';
 app.use(cors());
 app.use(express.json());
 
@@ -12,7 +14,20 @@ app.post('/register',async(req,resp)=>{
     let result= await user.save();
     result=result.toObject();
     delete result.password;
-    resp.send(result);
+    if (result)
+    {
+        Jwt.sign({result},jwtkey,{expiresIn:"2h"},(err,token)=>{
+            if (err)
+            {
+                console.log("Something went wrong please try again later")
+            }
+            else{
+                resp.send({result,auth:token});
+            }
+
+        })
+        
+    }
 });
 app.post('/login',async(req,resp)=>{
     if (req.body.email && req.body.email)
@@ -20,7 +35,17 @@ app.post('/login',async(req,resp)=>{
         let user=await User.findOne(req.body).select('-password');
         if (user)
         {
-            resp.send(user);
+            Jwt.sign({user},jwtkey,{expiresIn:"2h"},(err,token)=>{
+                if (err)
+                {
+                    console.log("Something went wrong please try again later")
+                }
+                else{
+                    resp.send({user,auth:token});
+                }
+
+            })
+            
         }
         else{
             resp.send('No user found');
